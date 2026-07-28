@@ -14,3 +14,15 @@ echo ""
 echo "[2/5] Installation complete."
 echo ""
 echo "Thank you for installing AppleTermuX! 🍎"
+
+echo ""
+echo "[3/5] Checking internet connection..."
+
+if ! ping -c 1 google.com >/dev/null 2>&1; then
+    echo "❌ No internet connection!"
+    echo "Please connect to Wi-Fi or Mobile Data and try again."
+    exit 1
+fi
+
+echo "✅ Internet connection detected."
+echo ""
