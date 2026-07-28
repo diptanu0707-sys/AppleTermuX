@@ -1,0 +1,40 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+VERSION="1.0.0"
+
+case "$1" in
+  help|"")
+    echo "🍎 AppleTermuX v$VERSION"
+    echo ""
+    echo "Usage:"
+    echo "  appletermux help"
+    echo "  appletermux info"
+    echo "  appletermux doctor"
+    echo "  appletermux update"
+    echo "  appletermux version"
+    ;;
+    
+  version)
+    echo "AppleTermuX v$VERSION"
+    ;;
+
+  info)
+    fastfetch
+    ;;
+
+  doctor)
+    echo "Running diagnostics..."
+    command -v git >/dev/null && echo "✅ Git installed" || echo "❌ Git missing"
+    command -v zsh >/dev/null && echo "✅ Zsh installed" || echo "❌ Zsh missing"
+    command -v fastfetch >/dev/null && echo "✅ Fastfetch installed" || echo "❌ Fastfetch missing"
+    ;;
+
+  update)
+    pkg update && pkg upgrade -y
+    ;;
+
+  *)
+    echo "Unknown command: $1"
+    echo "Run: appletermux help"
+    ;;
+esac
