@@ -53,6 +53,13 @@ echo ""
 echo "[6/6] Finishing setup..."
 
 echo ""
+echo "Installing AppleTermuX CLI..."
+
+install -Dm755 scripts/appletermux "$PREFIX/bin/appletermux"
+
+echo "✅ AppleTermuX CLI installed."
+
+echo ""
 echo "=========================================="
 echo "🎉 AppleTermuX installed successfully!"
 echo "=========================================="
