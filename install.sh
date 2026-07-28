@@ -26,3 +26,13 @@ fi
 
 echo "✅ Internet connection detected."
 echo ""
+
+echo "[4/5] Installing Oh My Zsh..."
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "✅ Oh My Zsh is already installed."
+fi
+
+echo ""
