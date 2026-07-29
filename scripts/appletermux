@@ -33,6 +33,18 @@ case "$1" in
     pkg update && pkg upgrade -y
     ;;
 
+  clean)
+    echo "🧹 Cleaning Termux..."
+
+    pkg autoclean -y
+    pkg clean -y
+
+    rm -rf "$HOME/.cache"/* 2>/dev/null
+
+    echo ""
+    echo "✅ Cleanup completed!"
+    ;;
+
   *)
     echo "Unknown command: $1"
     echo "Run: appletermux help"
