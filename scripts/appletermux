@@ -11,9 +11,11 @@ case "$1" in
     echo "  appletermux info"
     echo "  appletermux doctor"
     echo "  appletermux update"
+    echo "  appletermux clean"
+    echo "  appletermux self-update"
     echo "  appletermux version"
     ;;
-    
+
   version)
     echo "AppleTermuX v$VERSION"
     ;;
@@ -30,7 +32,7 @@ case "$1" in
     ;;
 
   update)
-    pkg update && pkg upgrade -y
+    pkg update -y && pkg upgrade -y
     ;;
 
   clean)
@@ -43,6 +45,22 @@ case "$1" in
 
     echo ""
     echo "✅ Cleanup completed!"
+    ;;
+
+  self-update)
+    echo "🔄 Checking for updates..."
+
+    if [ ! -d ".git" ]; then
+      echo "❌ This directory is not a Git repository."
+      exit 1
+    fi
+
+    git pull origin main
+
+    echo ""
+    echo "✅ AppleTermuX has been updated."
+    echo "If install.sh changed, run:"
+    echo "  bash install.sh"
     ;;
 
   *)
